@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-title>Welcome!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-segment (ionChange)='segmentChanged($event)'>
+                    <ion-segment-button value='login'>
+                        <ion-label>Login</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value='register'>
+                        <ion-label>Register</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                  <ion-label position='floating'>Email</ion-label>
+                  <ion-input type='text' [(ngModel)]='email'></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                  <ion-label position='floating'>Password</ion-label>
+                  <ion-input type='password' [(ngModel)]='password'></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf='state === "register"'>
+            <ion-col>
+                <ion-item>
+                  <ion-label position='floating'>Confirm password</ion-label>
+                  <ion-input type='password' [(ngModel)]='confirmedPassword'></ion-input>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf='state === "login"'>
+            <ion-col>
+                <ion-button color='secondary' expand='block' shape='round' (click)='login()'>
+                    Login
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf='state === "register"'>
+            <ion-col>
+                <ion-button color='secondary' expand='block' shape='round' (click)='register()'>
+                    Register
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand='block' shape='round'>
+                    Login with
+                    <ion-icon slot='end' name='logo-facebook'></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

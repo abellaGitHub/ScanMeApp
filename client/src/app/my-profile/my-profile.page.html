@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item>
+                        <ion-label position='floating'>First Name</ion-label>
+                        <ion-input type='text' [(ngModel)]='userData.firstName'></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position='floating'>Last Name</ion-label>
+                        <ion-input type='text' [(ngModel)]='userData.lastName'></ion-input>
+                    </ion-item>
+                    <ion-item *ngFor='let socialMedia of userData.socialMedia' lines='none'>
+                        <ion-icon slot='start' [name]='socialMedia.icon'></ion-icon>
+                        <div *ngIf='!socialMedia.value || socialMedia.value === ""'>
+                            <ion-button shape='round' (click)='connect(socialMedia)'>CONNECT {{socialMedia.label}}</ion-button>
+                        </div>
+                        <div *ngIf='socialMedia.value !== ""'>
+                            <ion-label>{{socialMedia.value}}</ion-label>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand='block' shape='round' (click)='saveMyProfile()'>SAVE MY PROFILE</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

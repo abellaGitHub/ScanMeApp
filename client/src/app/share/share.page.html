@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Share
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row text-center>
+            <ion-col>
+                <div *ngIf='shareCode'>
+                    <ngx-qrcode qrc-element-type='img' [qrc-value]='shareToken'></ngx-qrcode>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row text-center>
+            <ion-col>
+                <ion-button expand='block' shape='round' [disabled]='isShareButtonDisabled' (click)="share()">
+                    {{shareButtonText}}
+                </ion-button>
+            </ion-col>
+        </ion-row>      
+    </ion-grid>
+</ion-footer>

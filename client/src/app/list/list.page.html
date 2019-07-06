@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Contacts List
+    </ion-title>
+    <ion-buttons slot='end'>
+        <ion-button shape='round' (click)='save()'>
+            <ion-icon slot='icon-only' name='save'></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+        <ion-label>My Contacts</ion-label>
+    </ion-list-header>
+
+    <ion-card *ngFor="let userContact of userContacts">
+        <ion-card-header>
+            <ion-card-title>{{userContact.firstName}} {{userContact.lastName}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-item>
+            <ion-label position='floating'>Keywords</ion-label>
+            <ion-input type='text' [(ngModel)]='userContact.keywords'></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position='floating'>Note</ion-label>
+            <ion-textarea [(ngModel)]='userContact.note'></ion-textarea>
+        </ion-item>
+        <div *ngFor='let socialMedia of userContact.socialMedia'>
+            <ion-item *ngIf='socialMedia.value && socialMedia.value !== ""'>
+                <ion-icon slot='start' [name]='socialMedia.icon'></ion-icon>
+                <ion-label>{{socialMedia.value}}</ion-label>
+            </ion-item>
+        </div>
+    </ion-card>
+  </ion-list>
+</ion-content>

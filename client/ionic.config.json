@@ -1,0 +1,7 @@
+{
+  "name": "sma_mobile_client",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
